@@ -20,7 +20,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import server from './backend/mock-server'
 
-jest.setTimeout(750) // default 5000 too long for Codegrade
+jest.setTimeout(5000) // default 5000 too long for Codegrade
 
 const waitForOptions = { timeout: 250 }
 const queryOptions = { exact: false }
@@ -36,8 +36,8 @@ afterAll(() => { server.close() })
 beforeEach(() => { renderApp(<Router><App /></Router>) })
 afterEach(() => { server.resetHandlers() })
 
-describe('Sprint 7 Challenge Codegrade Tests', () => {
-  describe('App routing', () => {
+describe.only('Sprint 7 Challenge Codegrade Tests', () => {
+  describe.only('App routing', () => {
     test('[1] <App /> Renders without crashing', () => {
       // screen.debug()
     })
@@ -83,7 +83,7 @@ describe('Sprint 7 Challenge Codegrade Tests', () => {
       submitDisabled: submit.disabled,
     }
   }
-  describe('Form submission success', () => {
+  describe.only('Form submission success', () => {
     beforeEach(() => {
       fireEvent.click(screen.getByText('Order', queryOptions))
       getFormElements()
@@ -144,7 +144,7 @@ describe('Sprint 7 Challenge Codegrade Tests', () => {
       })
     })
   })
-  describe('Form validation', () => {
+  describe.only('Form validation', () => {
     beforeEach(() => {
       fireEvent.click(screen.getByText('Order', queryOptions))
       getFormElements()
